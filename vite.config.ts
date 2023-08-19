@@ -10,9 +10,6 @@ export default defineConfig(({ command, mode }) => {
           "@joypad-ts": path.resolve(__dirname, "./src"),
         },
       },
-      define: {
-        THREE: "{}",
-      },
       test: {
         environment: "jsdom",
       },
@@ -43,9 +40,6 @@ export default defineConfig(({ command, mode }) => {
         name: "joypadTs",
         // formats: ['es'],
         fileName: "joypad-ts",
-      },
-      rollupOptions: {
-        external: "three",
       },
     },
     plugins: [dts({ rollupTypes: true })],
