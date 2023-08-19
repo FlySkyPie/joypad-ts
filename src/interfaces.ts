@@ -76,12 +76,12 @@ export interface JoypadSettings {
 }
 
 export type EventMap = {
-  [EventEnum.CONNECT_NATIVE]: [event: GamepadEvent];
-  [EventEnum.CONNECT_ALIAS]: [event: GamepadEvent];
-  [EventEnum.DISCONNECT_NATIVE]: [event: GamepadEvent];
-  [EventEnum.DISCONNECT_ALIAS]: [event: GamepadEvent];
+  "gamepadconnected": [event: GamepadEvent];
+  "connect": [event: GamepadEvent];
+  "gamepaddisconnected": [event: GamepadEvent];
+  "disconnect": [event: GamepadEvent];
 
-  [EventEnum.BUTTON_PRESS_ALIAS]: [event: ButtonPressEvent];
-  [EventEnum.BUTTON_RELEASE_ALIAS]: [event: any];
-  [EventEnum.AXIS_MOVEMENT_ALIAS]: [event: AxisMoveEvent];
+  "button_press": [event: ButtonPressEvent];
+  "button_release": [event: ButtonPressEvent];
+  "axis_move": [event: AxisMoveEvent];
 };

@@ -6,7 +6,7 @@ import { log, hasVibrationSupport } from "./utils";
 class Joypad {
   public loopStarted = false;
 
-  public instances: Record<number, Gamepad> = {};
+  public instances: Record<number | string, Gamepad> = {};
 
   public buttonEvents: { joypad: (Record<string, JoypadItem> | null)[] } = {
     joypad: [],
@@ -20,7 +20,7 @@ class Joypad {
   }
 
   public on<TEventName extends keyof EventMap & string>(
-    event: EventEnum,
+    event: TEventName,
     callback: (...eventArg: EventMap[TEventName]) => void
   ) {
     switch (event) {

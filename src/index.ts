@@ -2,6 +2,8 @@ import "./events";
 import joypad from "./joypad";
 import { log, hasGamepadApiSupport } from "./utils";
 
+export type { ButtonPressEvent, AxisMoveEvent } from "./interfaces";
+
 export default joypad;
 
 if (!hasGamepadApiSupport()) {

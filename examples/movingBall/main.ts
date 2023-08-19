@@ -1,17 +1,17 @@
 import joypad from "@joypad-ts";
+import type { AxisMoveEvent } from "@joypad-ts";
 
-let ball = document.getElementById("ball");
-let heading = document.getElementById("heading");
-let message = document.getElementById("message");
+let ball = document.getElementById("ball")!;
+let heading = document.getElementById("heading")!;
+let message = document.getElementById("message")!;
 let ballMovements = { left: 0, top: 0 };
 
-function resetInfo(e) {
+function resetInfo() {
   heading.innerText = "No controller connected!";
-  message.innerText =
-    "Please connect a controller and press any key to start.";
+  message.innerText = "Please connect a controller and press any key to start.";
 }
 
-function updateInfo(e) {
+function updateInfo(e: GamepadEvent) {
   const { gamepad } = e;
 
   heading.innerText = "Controller connected!";
@@ -19,7 +19,7 @@ function updateInfo(e) {
     gamepad.id + "\n\n" + "Use the left stick to move the ball.";
 }
 
-function moveBall(e) {
+function moveBall(e: AxisMoveEvent) {
   const { directionOfMovement, stickMoved } = e.detail;
   const pixelsToMove = 6;
 
@@ -48,7 +48,7 @@ function moveBall(e) {
 resetInfo();
 joypad.set({ axisMovementThreshold: 0.3 });
 joypad.on("connect", (e) => updateInfo(e));
-joypad.on("disconnect", (e) => resetInfo(e));
+joypad.on("disconnect", () => resetInfo());
 joypad.on("axis_move", (e) => {
   console.log(e.detail);
   return moveBall(e);

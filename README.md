@@ -1,28 +1,24 @@
-<img src="https://github.com/ArunMichaelDsouza/joypad.js/blob/master/icon.png?raw=true" width="250" height="auto" alt="joypad.js icon"/>
+<img src="./icon.png" width="250" height="auto" alt="joypad.js icon"/>
 
-# joypad.js [![npm version](https://badge.fury.io/js/joypad.js.svg)](https://badge.fury.io/js/joypad.js) [![NPM Downloads](https://img.shields.io/npm/dm/joypad.js.svg?style=flat-square)](https://www.npmjs.com/package/joypad.js) [![Build Status](https://travis-ci.org/ArunMichaelDsouza/joypad.js.svg?branch=master)](https://travis-ci.org/ArunMichaelDsouza/joypad.js) <span class="badge-patreon"><a href="https://www.patreon.com/arunmichaeldsouza" title="Donate to this project using Patreon"><img src="https://img.shields.io/badge/patreon-donate-blue.svg" alt="Patreon donate button" /></a></span>
+# joypad-ts 
+
+This repo is a fork from [joypad.js](https://github.com/ArunMichaelDsouza/joypad.js), add module exports and type declaration.
 
 JavaScript library that lets you connect and use various gaming controllers with browsers that support the [Gamepad API](https://developer.mozilla.org/en-US/docs/Web/API/Gamepad_API).
 
-> Less than 5KB in size with zero dependencies and support for button press, axis movement events and vibration play effect.
-
-### [RPG JS](https://rpgjs.dev/) uses joypad.js under the hood for managing gamepad input.
-
-<img src="https://github.com/ArunMichaelDsouza/joypad.js/raw/master/rpg-js.png" width="100%" height="auto" alt="joypad.js icon"/>
-
-<br/>
+> Zero dependencies and support for button press, axis movement events and vibration play effect.
 
 ## Examples
 
 Working examples can be found in the `examples` folder in the repo -
 
-[connection.html](https://github.com/ArunMichaelDsouza/joypad.js/blob/master/examples/connection.html) - Gamepad connection example.
+[Connection](./examples/connection) - Gamepad connection example.
 
-[jumpingBall.html](https://github.com/ArunMichaelDsouza/joypad.js/blob/master/examples/jumpingBall.html) - Button press example (with custom button mapping).
+[Jumping Ball](./examples/jumpingBall) - Button press example (with custom button mapping).
 
-[movingBall.html](https://github.com/ArunMichaelDsouza/joypad.js/blob/master/examples/movingBall.html) - Axis (analog stick) movement example.
+[Moving Ball](/.examples/movingBall) - Axis (analog stick) movement example.
 
-[vibration.html](https://github.com/ArunMichaelDsouza/joypad.js/blob/master/examples/vibration.html) - Vibration play effect example.
+[Vibration](./examples/vibration) - Vibration play effect example.
 
 <br/>
 
@@ -299,16 +295,6 @@ joypad.set({
 });
 ```
 
-<br/>
-
-## Browsers support
-
-| [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="IE / Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Edge | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Safari | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png" alt="Opera" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Opera |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 12+                                                                                                                                                                                                        | 29+                                                                                                                                                                                                               | 25+                                                                                                                                                                                                           | 10.1+                                                                                                                                                                                                         | 24+                                                                                                                                                                                                       |
-
-<br/>
-
 ## Testing
 
 joypad.js uses the [Jest](https://facebook.github.io/jest/) test runner. Run the following command to initiate it -
@@ -327,33 +313,8 @@ joypad.js uses [SWC](https://swc.rs/) for its compilation and bundling. Run the 
 npm run build
 ```
 
-<br/>
-
-## Contributors
-
-| [<img src="https://avatars3.githubusercontent.com/u/4924614" width="100px;"/><br /><sub><b>Arun Michael Dsouza</b></sub>](https://github.com/ArunMichaelDsouza)<br /> | [<img src="https://avatars3.githubusercontent.com/u/1321971" width="100px;"/><br /><sub><b>Antoine Bluchet</b></sub>](https://github.com/soyuka)<br /> | [<img src="https://avatars1.githubusercontent.com/u/199635?s=400&v=4" width="100px;"/><br /><sub><b>Bart Nagel</b></sub>](https://github.com/tremby)<br /> | [<img src="https://avatars.githubusercontent.com/u/34157010" width="100px;"/><br /><sub><b>Jamie Lee Preece</b></sub>](https://github.com/jamieleepreece)<br /> | [<img src="https://avatars.githubusercontent.com/u/8282413" width="100px;"/><br /><sub><b>Andrew McOlash</b></sub>](https://github.com/amcolash)<br />
-| :-------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-
-<br/>
-
-## Support
-
-If you'd like to help support the development of the project, please consider backing me on Patreon -
-
-[<img src="https://arunmichaeldsouza.com/img/patreon.png" width="180px;"/>](https://www.patreon.com/bePatron?u=8841116)
-
-<br/>
-
 ## License
 
-MIT Licensed
-
-Copyright (c) 2019 Arun Michael Dsouza (amdsouza92@gmail.com)
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+[MIT Licensed](./LICENSE)
 
 All icons and images have been taken from [freepik.com](https://www.freepik.com/).

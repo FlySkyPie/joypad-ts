@@ -1,16 +1,15 @@
 import joypad from "@joypad-ts";
 
-let ball = document.getElementById("ball");
-let heading = document.getElementById("heading");
-let message = document.getElementById("message");
+let ball = document.getElementById("ball")!;
+let heading = document.getElementById("heading")!;
+let message = document.getElementById("message")!;
 
-function resetInfo(e) {
+function resetInfo() {
   heading.innerText = "No controller connected!";
-  message.innerText =
-    "Please connect a controller and press any key to start.";
+  message.innerText = "Please connect a controller and press any key to start.";
 }
 
-function updateInfo(e) {
+function updateInfo(e: GamepadEvent) {
   const { gamepad } = e;
 
   heading.innerText = "Controller connected!";
@@ -29,7 +28,7 @@ function setCustomButtonMapping() {
       button_0: 1,
     };
   } else {
-    return null;
+    return undefined;
   }
 }
 
@@ -39,7 +38,7 @@ joypad.set({
   customButtonMapping: setCustomButtonMapping(),
 });
 joypad.on("connect", (e) => updateInfo(e));
-joypad.on("disconnect", (e) => resetInfo(e));
+joypad.on("disconnect", () => resetInfo());
 joypad.on("button_press", (e) => {
   console.log(e.detail);
   const { buttonName } = e.detail;

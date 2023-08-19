@@ -1,15 +1,15 @@
 import joypad from "@joypad-ts";
-let heading = document.getElementById("heading");
-let message = document.getElementById("message");
-let vibrateButton = document.getElementById("vibrate");
+let heading = document.getElementById("heading")!;
+let message = document.getElementById("message")!;
+let vibrateButton = document.getElementById("vibrate")!;
 
-function resetInfo(e) {
+function resetInfo() {
   heading.innerText = "No controller connected!";
   message.innerText =
     "Please connect a controller and press any key to start.";
 }
 
-function updateInfo(e) {
+function updateInfo(e:GamepadEvent) {
   const { gamepad } = e;
 
   heading.innerText = "Controller connected!";
@@ -20,7 +20,7 @@ function updateInfo(e) {
 }
 
 function vibrateController() {
-  const connectedControllers = window.joypad.instances;
+  const connectedControllers = joypad.instances;
 
   if (Object.keys(connectedControllers).length) {
     Object.keys(connectedControllers).forEach((controller) => {
@@ -51,4 +51,4 @@ joypad.set({
   },
 });
 joypad.on("connect", (e) => updateInfo(e));
-joypad.on("disconnect", (e) => resetInfo(e));
+joypad.on("disconnect", () => resetInfo());

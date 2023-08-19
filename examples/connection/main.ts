@@ -1,15 +1,14 @@
 import joypad from "@joypad-ts";
 
-let heading = document.getElementById("heading");
-let message = document.getElementById("message");
+let heading = document.getElementById("heading")!;
+let message = document.getElementById("message")!;
 
-function resetInfo(e) {
+function resetInfo() {
   heading.innerText = "No controller connected!";
-  message.innerText =
-    "Please connect a controller and press any key to start.";
+  message.innerText = "Please connect a controller and press any key to start.";
 }
 
-function updateInfo(e) {
+function updateInfo(e: GamepadEvent) {
   const { gamepad } = e;
 
   heading.innerText = "Controller connected!";
@@ -23,5 +22,5 @@ joypad.on("connect", (e) => {
 });
 joypad.on("disconnect", (e) => {
   console.log(e);
-  return resetInfo(e);
+  return resetInfo();
 });
