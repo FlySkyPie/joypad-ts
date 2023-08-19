@@ -1,6 +1,5 @@
-// Events emitter
-
-import { EventEnum, EventMap } from "./constants";
+import { EventEnum } from "./constants";
+import { EventMap } from "./interfaces";
 
 class Emitter {
   events: Record<string, any[]> = {};

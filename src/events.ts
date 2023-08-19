@@ -1,17 +1,14 @@
-// Joypad events handler
-
 import emitter from "./emitter";
 import joypad from "./joypad";
 import loop from "./loop";
-import {
-  STICKS,
-  DIRECTIONS,
-  BUTTON_MAPPING,
-  EventEnum,
-  AsixMovmentData,
-} from "./constants";
+import { STICKS, DIRECTIONS, BUTTON_MAPPING, EventEnum } from "./constants";
 import { findButtonMapping } from "./utils";
-import { JoypadItem } from "./interfaces";
+import {
+  AsixMovmentData,
+  ButtonPressData,
+  DirectionOfMovement,
+  JoypadItem,
+} from "./interfaces";
 
 const initEventListeners = () => {
   window.addEventListener(EventEnum.CONNECT_NATIVE, (e) => {
@@ -98,9 +95,9 @@ export const listenToAxisMovements = (gamepad: Gamepad) => {
   const totalSticks = totalAxisIndexes / 2;
 
   axes.forEach((axis, index) => {
-    if (Math.abs(axis) > axisMovementThreshold) {
+    if (axisMovementThreshold && Math.abs(axis) > axisMovementThreshold) {
       let stickMoved = null;
-      let directionOfMovement = null;
+      let directionOfMovement: DirectionOfMovement = DIRECTIONS.BOTTOM;
       let axisMovementValue = axis;
 
       if (index < totalSticks) {
@@ -116,7 +113,7 @@ export const listenToAxisMovements = (gamepad: Gamepad) => {
         directionOfMovement = axis < 0 ? DIRECTIONS.TOP : DIRECTIONS.BOTTOM;
       }
 
-      const eventData = {
+      const eventData: AsixMovmentData = {
         gamepad,
         totalSticks,
         stickMoved,
@@ -130,18 +127,11 @@ export const listenToAxisMovements = (gamepad: Gamepad) => {
 };
 
 export const dispatchCustomEvent = (
-  eventName: string,
-  buttonEvents: Record<any, JoypadItem>,
-  buttonName: any
+  eventName: EventEnum.BUTTON_PRESS_ALIAS | EventEnum.BUTTON_RELEASE_ALIAS,
+  buttonEvents: Record<string, JoypadItem>,
+  buttonName: string
 ) => {
-  type EventData = {
-    buttonName: any;
-    button: any;
-    index: any;
-    gamepad: any;
-  };
-
-  const joypadEvent = (eventData: EventData) =>
+  const joypadEvent = (eventData: ButtonPressData) =>
     new CustomEvent(eventName, { detail: eventData });
   const { index, gamepad } = buttonEvents[buttonName];
   const eventData = {
@@ -149,14 +139,14 @@ export const dispatchCustomEvent = (
     button: buttonEvents[buttonName].button,
     index,
     gamepad,
-  };
+  } as ButtonPressData;
 
   window.dispatchEvent(joypadEvent(eventData));
 };
 
 export const handleButtonEvent = (
   buttonName: string,
-  buttonEvents: Record<any, JoypadItem>
+  buttonEvents: Record<string, JoypadItem>
 ) => {
   // Fire button press event
   if (buttonEvents[buttonName].pressed) {
@@ -189,4 +179,3 @@ export const handleButtonEvent = (
 };
 
 initEventListeners();
-// export { listenToButtonEvents, listenToAxisMovements, handleButtonEvent };

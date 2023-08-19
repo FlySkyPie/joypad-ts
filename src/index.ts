@@ -1,5 +1,3 @@
-// Entry point
-
 import "./events";
 import joypad from "./joypad";
 import { log, hasGamepadApiSupport } from "./utils";

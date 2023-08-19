@@ -8,27 +8,6 @@ export enum EventEnum {
   AXIS_MOVEMENT_ALIAS = "axis_move",
 }
 
-export type AsixMovmentData = {
-  gamepad: Gamepad;
-  totalSticks: number;
-  stickMoved: string;
-  directionOfMovement: string | null;
-  axisMovementValue: number;
-  axis: number;
-};
-
-export type EventMap = {
-  [EventEnum.CONNECT_NATIVE]: [event: GamepadEvent];
-  [EventEnum.CONNECT_ALIAS]: [event: GamepadEvent];
-  [EventEnum.DISCONNECT_NATIVE]: [event: GamepadEvent];
-  [EventEnum.DISCONNECT_ALIAS]: [event: GamepadEvent];
-
-  [EventEnum.AXIS_MOVEMENT_ALIAS]: [
-    event: CustomEvent<{ detail: AsixMovmentData }>
-  ];
-  // [EventEnum.DISCONNECT_NATIVE]: [];
-};
-
 export const STICKS = {
   LEFT: {
     NAME: "left_stick",
@@ -44,14 +23,14 @@ export const STICKS = {
       Y: 3,
     },
   },
-};
+} as const;
 
 export const DIRECTIONS = {
   LEFT: "left",
   RIGHT: "right",
   TOP: "top",
   BOTTOM: "bottom",
-};
+} as const;
 
 export const BUTTON_MAPPING = {
   button_0: 0,
@@ -75,5 +54,3 @@ export const BUTTON_MAPPING = {
 };
 
 export const AXIS_MOVEMENT_THRESHOLD = 0.8;
-
-// export { EVENTS, STICKS, DIRECTIONS, BUTTON_MAPPING, AXIS_MOVEMENT_THRESHOLD };

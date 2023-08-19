@@ -1,15 +1,19 @@
-import type { JoypadItem } from "./interfaces";
+import type { EventMap, JoypadItem, JoypadSettings } from "./interfaces";
 import emitter from "./emitter";
-import { AXIS_MOVEMENT_THRESHOLD, EventEnum, EventMap } from "./constants";
+import { AXIS_MOVEMENT_THRESHOLD, EventEnum } from "./constants";
 import { log, hasVibrationSupport } from "./utils";
 
 class Joypad {
   public loopStarted = false;
-  public instances: Record<number, any> = {};
-  public buttonEvents: { joypad: (Record<any, JoypadItem> | null)[] } = {
+
+  public instances: Record<number, Gamepad> = {};
+
+  public buttonEvents: { joypad: (Record<string, JoypadItem> | null)[] } = {
     joypad: [],
   };
-  public settings: any = { axisMovementThreshold: AXIS_MOVEMENT_THRESHOLD };
+  public settings: JoypadSettings = {
+    axisMovementThreshold: AXIS_MOVEMENT_THRESHOLD,
+  };
 
   public remove(index: number) {
     return delete this.instances[index];
@@ -33,7 +37,7 @@ class Joypad {
     }
   }
 
-  public vibrate(gamepadInstance: Gamepad, options: any) {
+  public vibrate(gamepadInstance: Gamepad, options?: GamepadEffectParameters) {
     const { vibrationActuator } = gamepadInstance;
     const vibrationSettings = options ? options : this.settings.vibration;
 
@@ -48,18 +52,22 @@ class Joypad {
     }
   }
 
-  public set(settings: any) {
+  public set(settings: JoypadSettings) {
     const { axisMovementThreshold, vibration, customButtonMapping } = settings;
-    const parsedValue = parseFloat(axisMovementThreshold);
 
-    if (!isNaN(parsedValue)) {
+    if (axisMovementThreshold !== undefined) {
+      const parsedValue =
+        typeof axisMovementThreshold === "string"
+          ? parseFloat(axisMovementThreshold)
+          : axisMovementThreshold;
+
       this.settings.axisMovementThreshold = parsedValue;
     }
     this.settings.vibration = vibration;
     this.settings.customButtonMapping = customButtonMapping;
   }
 
-  public trigger(event: any, data: any) {
+  public trigger(event: EventEnum, data: unknown) {
     return emitter.publish(event, data);
   }
 }

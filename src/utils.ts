@@ -1,5 +1,3 @@
-// Helper functions
-
 export const log = (...messages: string[]) => {
   if (console.warn && typeof console.warn === "function") {
     console.warn(...messages);
@@ -7,16 +5,20 @@ export const log = (...messages: string[]) => {
     console.log(...messages);
   }
 };
-export const findButtonMapping = (index: number, mapping: any) => {
+
+export const findButtonMapping = (
+  index: number,
+  mapping: Record<string, number | unknown[]>
+) => {
   let results: string[] = [];
 
   Object.keys(mapping).forEach((key) => {
     if (mapping[key] === index) {
       results.push(key);
-    } else if (
-      Array.isArray(mapping[key]) &&
-      mapping[key].indexOf(index) !== -1
-    ) {
+    }
+
+    const target = mapping[key];
+    if (Array.isArray(target) && target.indexOf(index) !== -1) {
       results.push(key);
     }
   });
@@ -41,5 +43,3 @@ export const hasGamepadApiSupport = () => {
     ? true
     : false;
 };
-
-// export { log, findButtonMapping, hasVibrationSupport, hasGamepadApiSupport };
