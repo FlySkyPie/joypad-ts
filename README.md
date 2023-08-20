@@ -27,13 +27,13 @@ Working examples can be found in the `examples` folder in the repo -
 #### via npm
 
 ```bash
-npm install joypad.js --save
+npm install @flyskypie/joypad-ts --save
 ```
 
 #### via yarn
 
 ```bash
-yarn add joypad.js
+yarn add @flyskypie/joypad-ts
 ```
 
 Or, [download](https://github.com/ArunMichaelDsouza/joypad.js/releases) the latest version and include `joypad.min.js` to your project.
@@ -47,11 +47,11 @@ Once joypad.js is installed and included in your project it becomes available on
 If you're working with `ES6` or `Common JS` modules you can include the library as follows -
 
 ```javascript
-import 'joypad.js'; // ES6
+import joypad from '@flyskypie/joypad-ts'; // ES6
 ```
 
 ```javascript
-require('joypad.js'); // Common JS
+const joypad = require('@flyskypie/joypad-ts'); // Common JS
 ```
 
 Once set up you can start listening to joypad.js events like so -
