@@ -1,6 +1,7 @@
 import joypad from "@joypad-ts";
 
 import "./sticks";
+import "./main-buttons";
 
 const gamepadSVG = document.querySelector<SVGSVGElement>("#gampad")!;
 
