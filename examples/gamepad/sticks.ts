@@ -45,7 +45,6 @@ const updateRightStick = () => {
 
 joypad.on("axis_move", ({ detail }) => {
   const { directionOfMovement, stickMoved, axisMovementValue } = detail;
-  console.log("detail", detail);
 
   if (stickMoved === "left_stick") {
     switch (directionOfMovement) {
